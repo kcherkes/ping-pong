@@ -6,6 +6,7 @@ from threading import Thread
 # ---ПУГАМЕ НАЛАШТУВАННЯ ---
 WIDTH, HEIGHT = 800, 600
 init()
+mixer.init()
 screen = display.set_mode((WIDTH, HEIGHT))
 clock = time.Clock()
 display.set_caption("Пінг-Понг")
@@ -43,6 +44,10 @@ font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
 
 # --- ЗВУКИ ---
+bg_music = mixer.music.load("house in a forest loop.ogg")
+hit_sound = mixer.Sound("nutfall.flac")
+vugrash_misic = mixer.music.load("DST-TowerDefenseTheme.mp3")
+proxrash_music = mixer.music.load("flaremain (1).ogg")
 
 # --- ГРА ---
 game_over = False
@@ -98,6 +103,7 @@ while True:
         if game_state['sound_event']:
             if game_state['sound_event'] == 'wall_hit':
                 # звук відбиття м'ячика від стін
+                hit_sound.play()
                 pass
             if game_state['sound_event'] == 'platform_hit':
                 # звук відбиття м'ячика від платформи
